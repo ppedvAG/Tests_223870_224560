@@ -32,6 +32,7 @@ namespace Calculator.Tests
         }
 
         [TestMethod]
+        [TestCategory("Exceptiontest")]
         public void Sum_intMAX_and_1_throws_OverflowException()
         {
             Calc calc = new Calc();
