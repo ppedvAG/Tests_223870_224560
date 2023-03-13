@@ -32,6 +32,16 @@ namespace Calculator.Tests
         }
 
         [TestMethod]
+        public void Sum_intMAX_and_1_throws_OverflowException()
+        {
+            Calc calc = new Calc();
+
+            Assert.ThrowsException<OverflowException>(() => calc.Sum(int.MaxValue, 1));
+            //Assert.ThrowsException<OverflowException>(() => calc.Sum(int.MinValue, -1));
+        }
+
+
+        [TestMethod]
         [DataRow(0, 0, 0)]
         [DataRow(1, 2, 3)]
         [DataRow(5000, 2222, 7222)]
