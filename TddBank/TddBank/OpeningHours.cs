@@ -1,4 +1,8 @@
-﻿namespace TddBank
+﻿using System.Runtime.CompilerServices;
+
+[assembly:InternalsVisibleTo("TddBank.Tests")]
+
+namespace TddBank
 {
     public class OpeningHours
     {
@@ -32,7 +36,7 @@
                    DateTime.Now.DayOfWeek == DayOfWeek.Saturday;
         }
 
-        public bool ReadConfigFile()
+        internal bool ReadConfigFile()
         {
             return File.ReadAllLines("b:\\tolleDatei.dat").Count(x => x == "b") > 4;
         }
