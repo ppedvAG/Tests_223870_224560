@@ -4,18 +4,27 @@
     {
         public bool IsOpen(DateTime dt)
         {
-            var start = new TimeSpan(10, 30, 0);
-            var ende = new TimeSpan(19, 00, 0);
-            var endeSa = new TimeSpan(14, 00, 0);
+            var openingTime = new TimeSpan(10, 30, 0);
+            var closingTime = new TimeSpan(19, 00, 0);
+            var saturdayClosingTime = new TimeSpan(14, 00, 0);
 
-            //häßlich aber geht
-            if (dt.DayOfWeek == DayOfWeek.Sunday) return false;
-            else if (dt.DayOfWeek == DayOfWeek.Saturday && dt.TimeOfDay >= start && dt.TimeOfDay < endeSa)
+            if (dt.DayOfWeek == DayOfWeek.Sunday)
+            {
+                return false;
+            }
+            else if (dt.DayOfWeek == DayOfWeek.Saturday && dt.TimeOfDay >= openingTime && dt.TimeOfDay < saturdayClosingTime)
+            {
                 return true;
-            else if (dt.DayOfWeek != DayOfWeek.Saturday && dt.DayOfWeek != DayOfWeek.Sunday && dt.TimeOfDay >= start && dt.TimeOfDay < ende)
+            }
+            else if (dt.DayOfWeek != DayOfWeek.Saturday && dt.DayOfWeek != DayOfWeek.Sunday && dt.TimeOfDay >= openingTime && dt.TimeOfDay < closingTime)
+            {
                 return true;
-
-            return false;
+            }
+            else
+            {
+                return false;
+            }
         }
+
     }
 }
