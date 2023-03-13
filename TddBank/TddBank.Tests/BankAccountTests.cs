@@ -38,6 +38,7 @@ namespace TddBank.Tests
             Assert.Throws<ArgumentException>(() => ba.Deposit(-1m));
             Assert.Throws<ArgumentException>(() => ba.Deposit(0m));
         }
+ 
 
         [Fact]
         public void Withdraw_should_substract_from_Balance()
@@ -69,7 +70,7 @@ namespace TddBank.Tests
             Assert.Throws<InvalidOperationException>(() => ba.Withdraw(13m));
         }
 
-        
+
 
     }
 }
