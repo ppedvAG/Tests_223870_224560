@@ -26,5 +26,15 @@
             }
         }
 
+        public bool IsWeekend()
+        {
+            return DateTime.Now.DayOfWeek == DayOfWeek.Sunday ||
+                   DateTime.Now.DayOfWeek == DayOfWeek.Saturday;
+        }
+
+        public bool ReadConfigFile()
+        {
+            return File.ReadAllLines("b:\\tolleDatei.dat").Count(x => x == "b") > 4;
+        }
     }
 }

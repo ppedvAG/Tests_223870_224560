@@ -1,4 +1,6 @@
-﻿namespace TddBank.Tests
+﻿using Microsoft.QualityTools.Testing.Fakes;
+
+namespace TddBank.Tests
 {
     public class OpeningHoursTests
     {
@@ -19,6 +21,42 @@
             var oh = new OpeningHours();
 
             Assert.Equal(result, oh.IsOpen(dt));
+        }
+
+        [Fact]
+        public void IsWeekend_Tests()
+        {
+            var oh = new OpeningHours();
+
+            using (var context = ShimsContext.Create())
+            {
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2023, 3, 13);//mo
+                Assert.False(oh.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2023, 3, 14);//di
+                Assert.False(oh.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2023, 3, 15);//mo
+                Assert.False(oh.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2023, 3, 16);//do
+                Assert.False(oh.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2023, 3, 17);//fr
+                Assert.False(oh.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2023, 3, 18);//sa
+                Assert.True(oh.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2023, 3, 19);//so
+                Assert.True(oh.IsWeekend());
+            }
+        }
+
+        [Fact]
+        public void ReadConfigFile_has_more_than_4_b()
+        {
+            var oh = new OpeningHours();
+
+            using (var context = ShimsContext.Create())
+            {
+                System.IO.Fakes.ShimFile.ReadAllLinesString = sr => new[] { "b", "b", "b", "b", "b" };
+                Assert.True(oh.ReadConfigFile());
+            }
         }
     }
 }
