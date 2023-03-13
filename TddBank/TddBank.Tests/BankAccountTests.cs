@@ -31,11 +31,12 @@ namespace TddBank.Tests
         }
 
         [Fact]
-        public void Deposit_a_negative_value_should_throw_ArgumentExecption()
+        public void Deposit_a_negative_or_zero_value_should_throw_ArgumentExecption()
         {
             var ba = new BankAccount();
 
             Assert.Throws<ArgumentException>(() => ba.Deposit(-1m));
+            Assert.Throws<ArgumentException>(() => ba.Deposit(0m));
         }
 
         [Fact]
@@ -50,12 +51,13 @@ namespace TddBank.Tests
         }
 
         [Fact]
-        public void Withdraw_a_negative_value_should_throw_ArgumentExecption()
+        public void Withdraw_a_negative_or_zero_value_should_throw_ArgumentExeception()
         {
             var ba = new BankAccount();
             ba.Deposit(12m);
 
             Assert.Throws<ArgumentException>(() => ba.Withdraw(-1m));
+            Assert.Throws<ArgumentException>(() => ba.Withdraw(0m));
         }
 
         [Fact]
@@ -66,6 +68,8 @@ namespace TddBank.Tests
 
             Assert.Throws<InvalidOperationException>(() => ba.Withdraw(13m));
         }
+
+        
 
     }
 }

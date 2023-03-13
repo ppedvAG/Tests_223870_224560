@@ -5,14 +5,22 @@
     {
         public decimal Balance { get; private set; }
 
-        public void Deposit(decimal v)
+        public void Deposit(decimal value)
         {
-            throw new NotImplementedException();
+            if (value <= 0)
+                throw new ArgumentException("Negative values can not be deposited");
+
+            Balance += value;
         }
 
-        public void Withdraw(decimal v)
+        public void Withdraw(decimal value)
         {
-            throw new NotImplementedException();
+            if (value <= 0)
+                throw new ArgumentException("Negative values can not be deposited");
+            if (value > Balance)
+                throw new InvalidOperationException("More than Balance can not be withdrawn");
+
+            Balance -= value;
         }
     }
 }
