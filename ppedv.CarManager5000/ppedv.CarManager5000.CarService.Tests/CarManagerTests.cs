@@ -49,11 +49,14 @@ namespace ppedv.CarManager5000.CarService.Tests
                 var man3 = new Manufacturer() { Name = "Benz" };
                 man3.Cars.Add(new Car() { KW = 60, BuildDate = DateTime.Now.AddDays(-6) });
 
-                return new[] { man1, man2, man2 };
+                return new[] { man1, man2, man3 };
             });
             var cm = new CarManager(mock.Object);
 
             var result = cm.GetManufacturerWithFastestCars();
+
+            mock.Verify(x => x.Delete(It.IsAny<Manufacturer>()), Times.Never);
+            mock.Verify(x => x.GetAll<Manufacturer>(), Times.Once);
 
             Assert.Equal("BMW", result.Name);
         }
