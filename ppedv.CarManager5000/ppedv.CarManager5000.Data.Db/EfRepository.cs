@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Internal;
-using ppedv.CarManager5000.Model.Contracts;
+﻿using ppedv.CarManager5000.Model.Contracts;
 
 namespace ppedv.CarManager5000.Data.Db
 {
