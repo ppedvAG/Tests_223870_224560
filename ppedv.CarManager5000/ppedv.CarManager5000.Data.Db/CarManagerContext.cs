@@ -10,7 +10,7 @@ namespace ppedv.CarManager5000.Data.Db
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var conString = "Server=(locadb)\\mssqllocaldb;Database=CarManager5000_Tests;Trusted_Connection=true";
+            var conString = "Server=(localdb)\\mssqllocaldb;Database=CarManager5000_Tests;Trusted_Connection=true";
             optionsBuilder.UseSqlServer(conString);
         }
     }
