@@ -1,6 +1,7 @@
 using AutoFixture;
 using AutoFixture.Kernel;
 using FluentAssertions;
+using Microsoft.EntityFrameworkCore;
 using ppedv.CarManager5000.Model;
 using System.Reflection;
 
@@ -73,6 +74,12 @@ namespace ppedv.CarManager5000.Data.Db.Tests
                 con.SaveChanges();
             }
 
+            using (var con = new CarManagerContext())
+            {
+                var loadedMan = con.Manufacturers.Include(x => x.Cars).FirstOrDefault(x => x.Id == man.Id);
+                loadedMan.Should().NotBeNull();
+                loadedMan.Should().BeEquivalentTo(man, x => x.IgnoringCyclicReferences());
+            }
         }
     }
 
