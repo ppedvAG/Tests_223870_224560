@@ -3,17 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:ppedv.CarManager5000.CarService.UI.Desktop.Views"
+             xmlns:local="clr-namespace:ppedv.CarManager5000.CarService.UI.Desktop.Views" xmlns:viewmodels="clr-namespace:ppedv.CarManager5000.CarService.UI.Desktop.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewmodels:CarViewModel/>
+    </UserControl.DataContext>
     <DockPanel>
+        <WrapPanel DockPanel.Dock="Top" Margin="4">
+            <Button Command="{Binding SaveCommand}">Speichern</Button>
+            <Button Command="{Binding NewCommand}">Neu</Button>
+            <Button >Löschen</Button>
+        </WrapPanel>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="2"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <DataGrid />
+            <DataGrid ItemsSource="{Binding Cars}"
+                      SelectedItem="{Binding SelectedCar}"/>
             <GridSplitter HorizontalAlignment="Stretch" Grid.Column="1"/>
             <Grid Grid.Column="2">
                 <Grid.ColumnDefinitions>
@@ -26,20 +35,21 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label>Model</Label>
-                <TextBox Grid.Column="1"/>
+                <TextBox Text="{Binding SelectedCar.Model}" Grid.Column="1"/>
                 <Label Grid.Row="1">Color</Label>
-                <TextBox Grid.Column="1" Grid.Row="1"/>
+                <TextBox Text="{Binding SelectedCar.Color}" Grid.Column="1" Grid.Row="1"/>
                 <Label Grid.Row="2">KW</Label>
-                <TextBox Grid.Column="1" Grid.Row="2"/>
+                <TextBox Text="{Binding SelectedCar.KW}" Grid.Column="1" Grid.Row="2"/>
                 <Label Grid.Row="3">BuildDate</Label>
-                <TextBox Grid.Column="1" Grid.Row="3"/>
+                <DatePicker SelectedDate="{Binding SelectedCar.BuildDate}" Grid.Column="1" Grid.Row="3"/>
                 <Label Grid.Row="4">Weight</Label>
-                <TextBox Grid.Column="1" Grid.Row="4"/>
+                <TextBox Text="{Binding SelectedCar.Weight}" Grid.Column="1" Grid.Row="4"/>
                 <Label Grid.Row="5">Manufacturer</Label>
-                <ComboBox Grid.Row="5" Grid.Column="1"/>
+                <ComboBox Text="{Binding SelectedCar.Manufacturer.Name}" Grid.Row="5" Grid.Column="1"/>
             </Grid>
 
         </Grid>

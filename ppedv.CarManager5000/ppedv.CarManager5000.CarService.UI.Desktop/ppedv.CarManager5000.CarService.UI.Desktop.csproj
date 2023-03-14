@@ -8,7 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
+    <PackageReference Include="CommunityToolkit.Common" Version="8.1.0" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ppedv.CarManager5000.CarService\ppedv.CarManager5000.CarService.csproj" />
+    <ProjectReference Include="..\ppedv.CarManager5000.Data.Db\ppedv.CarManager5000.Data.Db.csproj" />
+    <ProjectReference Include="..\ppedv.CarManager5000.Model\ppedv.CarManager5000.Model.csproj" />
   </ItemGroup>
 
 </Project>

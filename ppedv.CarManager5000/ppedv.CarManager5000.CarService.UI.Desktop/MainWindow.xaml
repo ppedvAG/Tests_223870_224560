@@ -19,6 +19,7 @@
                 <MenuItem Header="Beenden"/>
             </MenuItem>
         </Menu>
+
         <StatusBar Height="22" DockPanel.Dock="Bottom" Background="LightCyan"/>
 
         <TabControl>
