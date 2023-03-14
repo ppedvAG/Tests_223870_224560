@@ -9,6 +9,7 @@ namespace ppedv.CarManager5000.CarService.UI.Desktop.Tests.ViewModels
     public class CarViewModelTests
     {
         [Fact]
+        [Trait("","UnitTest")]
         public void CarList_should_be_loaded_at_launch()
         {
             var mock = new Mock<IRepository>();

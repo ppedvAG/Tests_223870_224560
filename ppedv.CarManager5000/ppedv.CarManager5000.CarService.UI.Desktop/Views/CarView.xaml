@@ -21,7 +21,8 @@
                 <ColumnDefinition Width="2"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <DataGrid ItemsSource="{Binding Cars}"
+            <DataGrid AutomationProperties.AutomationId="carGrid"
+                      ItemsSource="{Binding Cars}" IsReadOnly="True"
                       SelectedItem="{Binding SelectedCar}"/>
             <GridSplitter HorizontalAlignment="Stretch" Grid.Column="1"/>
             <Grid Grid.Column="2">
