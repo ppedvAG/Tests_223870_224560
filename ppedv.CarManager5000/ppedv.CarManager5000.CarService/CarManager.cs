@@ -15,7 +15,8 @@ namespace ppedv.CarManager5000.CarService
         public Manufacturer? GetManufacturerWithFastestCars()
         {
             return _repository.GetAll<Manufacturer>()
-                              .OrderBy(x => x.Cars.Sum(y => y.KW))
+                              .OrderByDescending(x => x.Cars.Sum(y => y.KW))
+                              .ThenByDescending(x => x.Cars.Average(x => x.BuildDate.Ticks))
                               .FirstOrDefault();
         }
     }
