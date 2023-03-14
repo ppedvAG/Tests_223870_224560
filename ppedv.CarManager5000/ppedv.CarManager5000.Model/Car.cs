@@ -1,9 +1,11 @@
-﻿namespace ppedv.CarManager5000.Model
+﻿using System.Globalization;
+
+namespace ppedv.CarManager5000.Model
 {
     public class Car
     {
         public int Id { get; set; }
-        public string Manufacturer { get; set; } = string.Empty;
+        public virtual Manufacturer? Manufacturer { get; set; }
         public string Model { get; set; } = string.Empty;
         public string? Color { get; set; }
         public int KW { get; set; }
