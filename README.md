@@ -7,3 +7,4 @@ https://learn.microsoft.com/en-us/sysinternals/downloads/
 https://autofixture.github.io/  
 https://fluentassertions.com/objectgraphs/   
 https://learn.microsoft.com/de-de/dotnet/communitytoolkit/mvvm/  
+https://github.com/FlaUI/FlaUI  
